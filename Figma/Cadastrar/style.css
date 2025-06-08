@@ -1,0 +1,129 @@
+.cadastrar,
+.cadastrar * {
+  box-sizing: border-box;
+}
+.cadastrar {
+  background: #ffffff;
+  padding: 10px;
+  height: 918px;
+  position: relative;
+  overflow: hidden;
+}
+.registrar {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  position: absolute;
+  left: 207px;
+  top: 241px;
+}
+.rectangle-15 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 416px;
+  height: 35px;
+  position: absolute;
+  left: 143px;
+  top: 360px;
+}
+.rectangle-16 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 416px;
+  height: 35px;
+  position: absolute;
+  left: 143px;
+  top: 447px;
+}
+.nome {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 143px;
+  top: 336px;
+  width: 62px;
+}
+.email {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 143px;
+  top: 423px;
+  width: 69px;
+}
+.rectangle-19 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 416px;
+  height: 35px;
+  position: absolute;
+  left: 143px;
+  top: 530px;
+}
+.senha {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 143px;
+  top: 506px;
+  width: 69px;
+}
+.group-27 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-18 {
+  background: #000000;
+  width: 416px;
+  height: 56px;
+  position: absolute;
+  left: 143px;
+  top: 590px;
+}
+.cadastrar2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 276px;
+  top: 599px;
+}
+.j-possui-uma-conta {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 143px;
+  top: 674px;
+}
+.logar {
+  color: #0400ff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 324px;
+  top: 674px;
+}

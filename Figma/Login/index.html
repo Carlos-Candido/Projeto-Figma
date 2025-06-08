@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md p-8 ">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl md:text-6xl font-bold mb-12 text-black text-center mx-auto">Login</h1>
+    </div>
+
+    
+    <form class="space-y-6">
+      <div>
+        <label for="email" class="block text-lg font-medium text-black mb-1">Email:</label>
+        <input type="email" id="email" name="email" class="w-full border border-black h-12 px-4 rounded-md text-black" />
+      </div>
+
+      
+      <div>
+        <label for="senha" class="block text-lg font-medium text-black mb-1">Senha:</label>
+        <input type="password" id="senha" name="senha" class="w-full border border-black h-12 px-4 rounded-md text-black" />
+      </div>
+
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center">
+          <input type="checkbox" id="lembre-se-de-mim" name="lembre-se-de-mim" class="h-5 w-5 text-black rounded-md" />
+          <label for="lembre-se-de-mim" class="ml-2 text-black">Lembre-se de mim</label>
+        </div>
+        <a href="../Esqueci/index.html" class="text-blue-500 hover:underline">Esqueceu a senha?</a>
+      </div>
+
+      
+      <a href="../Home/index.html" class="w-full bg-black text-white text-2xl py-3 font-normal rounded-md hover:bg-gray-800 text-center block">
+         Entrar
+      </a>
+    </form>
+
+    
+    <div class="mt-6 text-center">
+      <span class="text-sm text-black">Não tem uma conta?</span>
+      <a href="../Cadastrar/index.html" class="text-blue-500 text-sm hover:underline px-3">Cadastre-se</a>
+    </div>
+  </div>
+
+</body>
+</html>

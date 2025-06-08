@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Plataforma de Cursos</title>
+</head>
+<body class="bg-white font-sans">
+  <div class="min-h-screen flex flex-col">
+    <!-- Cabeçalho -->
+    <header class="bg-black text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-20.png" alt="Logo" class="h-16 w-auto rounded-full">
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold">Olá, Fulano!</h1>
+            <p class="text-xl md:text-2xl font-bold">Seja bem-vindo!</p>
+          </div>
+        </div>
+        <a href="../Login/index.html">
+          <img src="frame0.svg" 
+               alt="Perfil" 
+               class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-white p-1 hover:opacity-80 transition">
+        </a>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow container mx-auto p-4 space-y-6">
+      <!-- Seção de Boas-Vindas -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="border border-gray-300 rounded-lg shadow-md overflow-hidden">
+          <img src="ChatGPT Image May 17, 2025, 10_48_41 AM.png" alt="Imagem de TI" class="w-full h-500 object-cover">
+        </div>
+        <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+          <h2 class="text-lg font-bold mb-2">Bem-vindo à plataforma</h2>
+          <p class="text-gray-700">
+           Aprenda sobre as tecnologias emergentes que estão transformando o mercado e prepare-se para as oportunidades do amanhã. Com nossos cursos de programação, redes de computadores, design digital, engenharia de software, inteligência artificial e muito mais, você terá acesso a conteúdos atualizados, práticos e alinhados com as demandas reais da indústria.
+          </p>
+        </div>
+      </section>
+
+      <!-- Navegação -->
+      <nav class="flex flex-wrap justify-center gap-4">
+        <a href="../Cursos/index.html" class="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition">Cursos</a>
+        <a href="../Dicas/index.html" class="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition">Dicas</a>
+        <a href="../Novidades/index.html" class="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition">Novidades</a>
+      </nav>
+
+      <!-- Artigos/Dicas -->
+      <section class="space-y-6">
+        <!-- Artigo 1 -->
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+          <div class="flex flex-col md:flex-row">
+            <img src="image-10.png" alt="Tecnologia da Informação" class="w-full md:w-1/4  h-500 object-cover">
+            <div class="p-4 flex-grow">
+              <h3 class="text-lg font-bold mb-2">O que é Tecnologia da Informação?</h3>
+              <p class="text-gray-700 mb-4">
+                A TI é um dos pilares fundamentais da era digital, desempenhando um papel 
+                estratégico na inovação, automação e otimização de processos.
+              </p>
+              <a href="../Not1/index.html" class="inline-block bg-black text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800 transition">Saiba mais</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artigo 2 -->
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+          <div class="flex flex-col md:flex-row">
+            <img src="image-20.png" alt="Linguagem Portugol" class="w-full md:w-1/4 h-500 object-cover">
+            <div class="p-4 flex-grow">
+              <h3 class="text-lg font-bold mb-2">O que é a Linguagem Portugol?</h3>
+              <p class="text-gray-700 mb-4">
+                Portugol é uma linguagem de programação didática que utiliza uma sintaxe
+                baseada na língua portuguesa para ensinar lógica de programação.
+              </p>
+              <a href="../Not2/index.html" class="inline-block bg-black text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800 transition">Saiba mais</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artigo 3 -->
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden">
+          <div class="flex flex-col md:flex-row">
+            <img src="image-30.png" alt="Roadmap Programação" class="w-full md:w-1/4 h-500 object-cover">
+            <div class="p-4 flex-grow">
+              <h3 class="text-lg font-bold mb-2">Roadmap para Aprender Programação</h3>
+              <p class="text-gray-700 mb-4">
+                Um roadmap define quais habilidades e tecnologias devem ser aprendidas
+                primeiro, organizando o conhecimento de forma estruturada.
+              </p>
+              <a href="../Not3/index.html" class="inline-block bg-black text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800 transition">Saiba mais</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-200 py-4">
+      <div class="container mx-auto text-center">
+        <p class="font-bold">(17) 99456-7890</p>
+        <p class="font-bold">Dev.site@gmail.com</p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

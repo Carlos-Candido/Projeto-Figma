@@ -1,0 +1,421 @@
+.home,
+.home * {
+  box-sizing: border-box;
+}
+.home {
+  background: #ffffff;
+  padding: 10px;
+  height: 1288px;
+  position: relative;
+  overflow: hidden;
+}
+.rectangle-3 {
+  background: #000000;
+  width: 699px;
+  height: 203px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+._0-dd-5-aa-4-c-5373-4-f-0-d-9-af-0-2-b-3855501125-1 {
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 320px;
+  height: 272px;
+  position: absolute;
+  left: 20px;
+  top: 248px;
+  box-shadow: var(--teste-box-shadow, 0px 7px 4px 0px rgba(0, 0, 0, 0.25));
+  object-fit: cover;
+}
+.seja-bem-vindo-a-plataforma-de-cursos-aprenda-j {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 180px;
+  top: 72px;
+  width: 331px;
+  height: 33px;
+}
+.rectangle-2 {
+  background: #d9d9d9;
+  width: 320px;
+  height: 272px;
+  position: absolute;
+  left: 360px;
+  top: 248px;
+  box-shadow: var(--teste-box-shadow, 0px 7px 4px 0px rgba(0, 0, 0, 0.25));
+}
+.ol-fulano {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  left: 190px;
+  top: 26px;
+  width: 224px;
+  height: 36px;
+}
+.rectangle-4 {
+  background: #000000;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 40px;
+  top: 569px;
+}
+.curso {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 87px;
+  top: 572px;
+}
+.group-6 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-5 {
+  background: #000000;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 274px;
+  top: 569px;
+}
+.dicas {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 321px;
+  top: 572px;
+  width: 77px;
+  height: 23px;
+}
+.group-7 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-6 {
+  background: #000000;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 509px;
+  top: 569px;
+}
+.novidades {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 533px;
+  top: 572px;
+  width: 101px;
+  height: 23px;
+}
+.rectangle-8 {
+  background: #d9d9d9;
+  width: 660px;
+  height: 150px;
+  position: absolute;
+  left: 20px;
+  top: 642px;
+  box-shadow: var(--teste-box-shadow, 0px 7px 4px 0px rgba(0, 0, 0, 0.25));
+}
+.a-tecnologia-da-informa-o-ti-um-dos-pilares-fundamentais-da-era-digital-desempenhando-um-papel-estrat-gico-na-inova-o-automa-o-e-otimiza-o-de-processos-em-empresas-e-na-sociedade {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 238px;
+  top: 676px;
+  width: 441px;
+  height: 75px;
+}
+.group-8 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-11 {
+  background: #000000;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 237px;
+  top: 759px;
+}
+.saiba-mais {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 272px;
+  top: 764px;
+}
+.rectangle-9 {
+  background: #d9d9d9;
+  width: 660px;
+  height: 150px;
+  position: absolute;
+  left: 19px;
+  top: 812px;
+  box-shadow: var(--teste-box-shadow, 0px 7px 4px 0px rgba(0, 0, 0, 0.25));
+}
+.rectangle-10 {
+  background: #d9d9d9;
+  width: 660px;
+  height: 150px;
+  position: absolute;
+  left: 19px;
+  top: 982px;
+  box-shadow: var(--teste-box-shadow, 0px 7px 4px 0px rgba(0, 0, 0, 0.25));
+}
+.freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-1 {
+  width: 161px;
+  height: 207px;
+  position: absolute;
+  left: 2px;
+  top: -5px;
+  object-fit: cover;
+  aspect-ratio: 161/207;
+}
+.freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-2 {
+  border-radius: 263px;
+  width: 161px;
+  height: 207px;
+  position: absolute;
+  left: 9px;
+  top: -4px;
+  object-fit: cover;
+  aspect-ratio: 161/207;
+}
+.bem-vindo-a-ao-aplicativo-de-cursos-da-rea-de-t-cnologia-da-informa-o-na-qual-ir-aprender-sobre-as-tecnologias-emergentes-do-mercado-de-trabalho-aqui-voc-ir-encontrar-cursos-sobre-programa-o-redes-design-projetos-engenharia-de-software-intelig-ncia-artificial-e-muito-mais-explore-os-links-e-navegue-conosco-nesta-jornada-de-aprendizado {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  position: absolute;
+  left: 360px;
+  top: 248px;
+  width: 319px;
+  height: 272px;
+}
+.image-1 {
+  width: 177.33px;
+  height: 133px;
+  position: absolute;
+  left: 34px;
+  top: 650px;
+  object-fit: cover;
+  aspect-ratio: 177.33/133;
+}
+.image-4 {
+  width: 177.33px;
+  height: 133px;
+  position: absolute;
+  left: 34px;
+  top: 650px;
+  object-fit: cover;
+  aspect-ratio: 177.33/133;
+}
+.o-que-a-tecnologia-da-informa-o {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  position: absolute;
+  left: 238px;
+  top: 650px;
+  width: 375px;
+  height: 23px;
+}
+.image-2 {
+  width: 178px;
+  height: 133px;
+  position: absolute;
+  left: 34px;
+  top: 820px;
+  object-fit: cover;
+}
+.o-que-a-linguagem-portugol-guia-definitivo {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  position: absolute;
+  left: 238px;
+  top: 817px;
+  width: 441px;
+}
+.image-3 {
+  width: 178px;
+  height: 133px;
+  position: absolute;
+  left: 34px;
+  top: 991px;
+  object-fit: cover;
+}
+.group-10 {
+  position: absolute;
+  inset: 0;
+}
+.group-9 {
+  width: 150px;
+  height: 30px;
+  position: static;
+}
+.rectangle-12 {
+  background: #000000;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 237px;
+  top: 923px;
+}
+.saiba-mais2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 272px;
+  top: 928px;
+}
+.portugol-uma-linguagem-de-programa-o-did-tica-que-utiliza-uma-sintaxe-baseada-na-l-ngua-portuguesa-seu-principal-objetivo-ensinar-l-gica-de-programa-o-para-iniciantes {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 240px;
+  top: 840px;
+  width: 436px;
+}
+.roadmap-para-aprender-programa-o-o-caminho-certo-para-se-tornar-um-programador {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 240px;
+  top: 984px;
+  width: 428px;
+}
+.um-roadmap-define-quais-habilidades-e-tecnologias-devem-ser-aprendidas-primeiro-organizando-o-conhecimento {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 240px;
+  top: 1029px;
+  width: 428px;
+  height: 56px;
+}
+.group-11 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-13 {
+  background: #000000;
+  border-radius: 30px;
+  width: 150px;
+  height: 30px;
+  position: absolute;
+  left: 234px;
+  top: 1092px;
+}
+.saiba-mais3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 269px;
+  top: 1097px;
+}
+.group-18 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-14 {
+  background: #d9d9d9;
+  width: 699px;
+  height: 95px;
+  position: absolute;
+  left: 0px;
+  top: 1193px;
+}
+.dev-site-gmail-com {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 268px;
+  top: 1236px;
+}
+._17-99456-7890 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  position: absolute;
+  left: 276px;
+  top: 1207px;
+  width: 149px;
+  height: 29px;
+}
+.ellipse-1 {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 109px;
+  height: 108px;
+  position: absolute;
+  left: 570px;
+  top: 35px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.frame {
+  width: 109px;
+  height: 106px;
+  position: absolute;
+  left: 570px;
+  top: 37px;
+  overflow: visible;
+}

@@ -1,0 +1,89 @@
+.esqueci,
+.esqueci * {
+  box-sizing: border-box;
+}
+.esqueci {
+  background: #ffffff;
+  padding: 10px;
+  height: 918px;
+  position: relative;
+  overflow: hidden;
+}
+.redefinir-senha {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  position: absolute;
+  left: 101px;
+  top: 240px;
+}
+.group-27 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-18 {
+  background: #000000;
+  width: 416px;
+  height: 56px;
+  position: absolute;
+  left: 143px;
+  top: 590px;
+}
+.redefinir {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  position: absolute;
+  left: 276px;
+  top: 599px;
+}
+.rectangle-20 {
+  background: #ffffff;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 416px;
+  height: 35px;
+  position: absolute;
+  left: 142px;
+  top: 483px;
+}
+.email {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 142px;
+  top: 459px;
+  width: 69px;
+}
+.informe-o-email-para-o-qual-deseja-redefinir-sua-senha {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 138px;
+  top: 350px;
+  width: 423px;
+  height: 24px;
+}
+.voltar-ao-login {
+  color: #0400ff;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 293px;
+  top: 687px;
+  width: 114px;
+  height: 18px;
+}
