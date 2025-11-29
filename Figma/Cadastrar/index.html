@@ -1,41 +1,609 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registrar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <title>Cadastrar | AprendaJá</title>
+  <style>
+    .high-contrast {
+      background-color: black !important;
+      color: white !important;
+    }
+
+    .high-contrast .acc-btn,
+    .high-contrast .footer-btn,
+    .high-contrast .article-btn {
+      border: 0.5px solid white !important;
+    }
+
+    .high-contrast .nav-btn:hover,
+    .high-contrast .acc-btn:hover,
+    .high-contrast .footer-btn:hover,
+    .high-contrast .article-btn:hover {
+      border: 0.5px solid white !important;
+      background-color: black !important;
+    }
+
+    .high-contrast p,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast h3,
+    .high-contrast a,
+    .high-contrast li,
+    .high-contrast span,
+    .high-contrast button,
+    .high-contrast label,
+    .high-contrast input {
+      color: white !important;
+      background-color: black !important;
+      border-color: white !important;
+    }
+
+    .high-contrast .bg-gray-100,
+    .high-contrast .bg-gray-200 {
+      background-color: black !important;
+      border-color: white !important;
+    }
+
+    .high-contrast .border-gray-300 {
+      border-color: white !important;
+    }
+
+    /* Dropdown de acessibilidade */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      margin-top: 5px;
+    }
+
+    .dropdown-content button {
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      border: 1px solid white;
+      background: none;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .show {
+      display: block;
+    }
+
+    /* Contraste para dropdown */
+    .high-contrast .dropdown-content button {
+      border: 0.5px solid white !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content {
+      background-color: transparent !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content button:hover {
+      border: 0.5px solid black !important;
+    }
+
+    /* Captcha */
+    .captcha-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: #f3f4f6;
+      border: 2px solid #d1d5db;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .captcha-display {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #captchaCanvas {
+      border: 2px solid #9ca3af;
+      border-radius: 0.375rem;
+      background-color: white;
+      cursor: not-allowed;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .captcha-input-group {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .captcha-input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 2px solid #9ca3af;
+      border-radius: 0.375rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .captcha-input:focus {
+      outline: none;
+      border-color: black;
+    }
+
+    .captcha-refresh {
+      background-color: black;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      border: none;
+      font-size: 0.875rem;
+      transition: all 0.3s;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .captcha-refresh:hover {
+      background-color: #374151;
+      transform: scale(1.05);
+    }
+
+    .captcha-error {
+      color: #dc2626;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    .captcha-success {
+      color: #16a34a;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    .high-contrast .captcha-container {
+      background-color: black !important;
+      border-color: white !important;
+    }
+
+    .high-contrast #captchaCanvas {
+      border-color: white !important;
+      background-color: #1f1f1f !important;
+    }
+
+    .high-contrast .captcha-input {
+      background-color: black !important;
+      color: white !important;
+      border-color: white !important;
+    }
+
+    .high-contrast .captcha-refresh {
+      background-color: white !important;
+      color: black !important;
+      border: 2px solid white !important;
+    }
+
+    .high-contrast .captcha-error {
+      color: #ff6b6b !important;
+    }
+
+    .high-contrast .captcha-success {
+      color: #51cf66 !important;
+    }
+
+    /* Menu mobile */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: black;
+      z-index: 100;
+      padding: 1rem;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+      display: block;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    /* Isola VLibras do modo contraste */
+    .high-contrast [vw],
+    .high-contrast [vw] * {
+      all: unset !important;
+      all: revert !important;
+      color: initial !important;
+      background-color: initial !important;
+      border-color: initial !important;
+      box-shadow: none !important;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-button {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-white min-h-screen flex items-center justify-center px-4">
-  <div class="w-full max-w-md">
-    <h1 class="text-4xl md:text-6xl font-bold mb-12 text-black text-center mx-auto">Registrar</h1>
-
-    <form class="space-y-6">
-      <div>
-        <label for="nome" class="block text-black text-lg font-medium mb-1">Nome:</label>
-        <input type="text" id="nome" name="nome" class="w-full border border-black h-9 px-3 text-black rounded-md" />
+<body class="bg-white font-sans text-base transition-all duration-300">
+  <div id="main-container" class="min-h-screen flex flex-col">
+    <!-- Cabeçalho -->
+    <nav class="bg-black text-white px-6 py-3 flex flex-wrap justify-between items-center top-0 z-50 shadow-lg">
+      <div class="flex items-center space-x-4">
+        <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-20.png" alt="Logo"
+          class="h-12 w-auto rounded-full">
+        <a href="../Home/index.html" class="font-bold text-lg">AprendaJá</a>
       </div>
 
-      <div>
-        <label for="email" class="block text-black text-lg font-medium mb-1">Email:</label>
-        <input type="email" id="email" name="email" class="w-full border border-black h-9 px-3 text-black rounded-md" />
+      <!-- Menu desktop -->
+      <div class="flex items-center space-x-4">
+        <!-- Dropdown de Acessibilidade -->
+        <div class="relative">
+          <button onclick="toggleAccessibilityMenu(event)"
+            class="acc-btn bg-gray-200 text-black px-2 py-2 rounded hover:bg-gray-300 flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Acessibilidade
+          </button>
+          <div id="accessibilityDropdown" class="dropdown-content">
+            <button onclick="aumentarFonte(event)">Aumentar Fonte (A+)</button>
+            <button onclick="diminuirFonte(event)">Diminuir Fonte (A-)</button>
+            <button onclick="fontePadrao(event)">Fonte Padrão (A)</button>
+            <button onclick="alternarContraste(event)">Alternar Contraste</button>
+          </div>
+        </div>
       </div>
+    </nav>
 
-      <div>
-        <label for="senha" class="block text-black text-lg font-medium mb-1">Senha:</label>
-        <input type="password" id="senha" name="senha" class="w-full border border-black h-9 px-3 text-black rounded-md" />
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="flex flex-col space-y-4 p-4">
+        <a href="../Home/index.html" class="text-white hover:text-gray-300">Home</a>
+        <a href="../Cursos/index.html" class="text-white hover:text-gray-300">Cursos</a>
+        <a href="../Dicas/index.html" class="text-white hover:text-gray-300">Dicas</a>
+        <a href="../Novidades/index.html" class="text-white hover:text-gray-300">Novidades</a>
       </div>
-
-      <button class="w-full bg-black text-white text-2xl py-3 font-normal block text-center rounded-md hover:bg-gray-800">
-        Cadastrar
-      </button>
-    </form>
-
-    <div class="mt-6 flex justify-center text-sm">
-      <span class="text-black">Já possui uma conta?</span>
-      <a href="../Login/index.html" class="text-blue-700 hover:underline px-3">Logar</a>
     </div>
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8">
+      <div class="w-full max-w-md">
+        <h1 class="text-4xl md:text-6xl font-bold mb-12 text-black text-center mx-auto">Registrar</h1>
+
+        <form class="space-y-6" id="registerForm" onsubmit="return validateForm(event)">
+          <div>
+            <label for="nome" class="block text-black text-lg font-medium mb-1">Nome:</label>
+            <input type="text" id="nome" name="nome" required
+              class="w-full border border-black h-9 px-3 text-black rounded-md" />
+          </div>
+
+          <div>
+            <label for="email" class="block text-black text-lg font-medium mb-1">Email:</label>
+            <input type="email" id="email" name="email" required
+              class="w-full border border-black h-9 px-3 text-black rounded-md" />
+          </div>
+
+          <div>
+            <label for="senha" class="block text-black text-lg font-medium mb-1">Senha:</label>
+            <input type="password" id="senha" name="senha" required
+              class="w-full border border-black h-9 px-3 text-black rounded-md" />
+          </div>
+
+          <!-- Captcha -->
+          <div>
+            <label class="block text-black text-lg font-medium mb-2">Verificação de Segurança:</label>
+            <div class="captcha-container">
+              <div class="captcha-display">
+                <canvas id="captchaCanvas" width="200" height="60"></canvas>
+                <button type="button" class="captcha-refresh" onclick="generateCaptcha()" title="Gerar novo código">
+                  ↻ Atualizar
+                </button>
+              </div>
+              <div class="captcha-input-group">
+                <input type="text" id="captchaInput" class="captcha-input" 
+                  placeholder="Digite o código acima" required autocomplete="off" 
+                  maxlength="6" />
+              </div>
+              <span class="captcha-error" id="captchaError">❌ Código incorreto! Tente novamente.</span>
+              <span class="captcha-success" id="captchaSuccess">✓ Código verificado com sucesso!</span>
+            </div>
+          </div>
+
+          <button type="submit"
+            class="w-full bg-black text-white text-2xl py-3 font-normal block text-center rounded-md hover:bg-gray-800 border border-white">
+            Cadastrar
+          </button>
+        </form>
+
+
+        <div class="mt-6 flex justify-center text-sm">
+          <span class="text-black">Já possui uma conta?</span>
+          <a href="../Login/index.html" class="text-blue-500 font-semibold hover:underline px-3">Logar</a>
+        </div>
+      </div>
+    </main>
   </div>
-</body>
+
+  <!-- Widget VLibras -->
+
+  <script>
+    // Variáveis do Captcha
+    let captchaCode = '';
+
+    // Gera um código aleatório de 6 caracteres
+    function generateRandomCode() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Remove letras/números confusos
+      let code = '';
+      for (let i = 0; i < 6; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return code;
+    }
+
+    // Desenha o captcha no canvas
+    function drawCaptcha(code) {
+      const canvas = document.getElementById('captchaCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Limpa o canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Fundo com gradiente
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#f3f4f6');
+      gradient.addColorStop(1, '#e5e7eb');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Adiciona linhas de ruído
+      for (let i = 0; i < 8; i++) {
+        ctx.strokeStyle = `rgba(${Math.random() * 100}, ${Math.random() * 100}, ${Math.random() * 100}, 0.3)`;
+        ctx.lineWidth = Math.random() * 2 + 1;
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+        ctx.stroke();
+      }
+      
+      // Adiciona pontos de ruído
+      for (let i = 0; i < 50; i++) {
+        ctx.fillStyle = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.4)`;
+        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 2, 2);
+      }
+      
+      // Desenha cada caractere com distorção
+      const charWidth = canvas.width / code.length;
+      for (let i = 0; i < code.length; i++) {
+        ctx.save();
+        
+        // Posição base
+        const x = charWidth * i + charWidth / 2;
+        const y = canvas.height / 2;
+        
+        // Translação para o ponto de rotação
+        ctx.translate(x, y);
+        
+        // Rotação aleatória
+        const angle = (Math.random() - 0.5) * 0.4;
+        ctx.rotate(angle);
+        
+        // Estilo do texto
+        ctx.font = `bold ${28 + Math.random() * 8}px Arial`;
+        ctx.fillStyle = `rgb(${Math.random() * 100}, ${Math.random() * 100}, ${Math.random() * 100})`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Sombra
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+        ctx.shadowBlur = 3;
+        ctx.shadowOffsetX = 2;
+        ctx.shadowOffsetY = 2;
+        
+        // Desenha o caractere
+        ctx.fillText(code[i], 0, (Math.random() - 0.5) * 5);
+        
+        ctx.restore();
+      }
+      
+      // Adiciona mais ruído por cima
+      for (let i = 0; i < 3; i++) {
+        ctx.strokeStyle = `rgba(${Math.random() * 200}, ${Math.random() * 200}, ${Math.random() * 200}, 0.2)`;
+        ctx.lineWidth = Math.random() * 3 + 1;
+        ctx.beginPath();
+        ctx.moveTo(0, Math.random() * canvas.height);
+        ctx.bezierCurveTo(
+          canvas.width * 0.25, Math.random() * canvas.height,
+          canvas.width * 0.75, Math.random() * canvas.height,
+          canvas.width, Math.random() * canvas.height
+        );
+        ctx.stroke();
+      }
+    }
+
+    // Gera um novo captcha
+    function generateCaptcha() {
+      captchaCode = generateRandomCode();
+      drawCaptcha(captchaCode);
+      document.getElementById('captchaInput').value = '';
+      document.getElementById('captchaError').style.display = 'none';
+      document.getElementById('captchaSuccess').style.display = 'none';
+    }
+
+    // Valida o formulário
+    function validateForm(event) {
+      event.preventDefault();
+      
+      const userInput = document.getElementById('captchaInput').value.toUpperCase();
+      const errorElement = document.getElementById('captchaError');
+      const successElement = document.getElementById('captchaSuccess');
+      
+      if (userInput === captchaCode) {
+        // Captcha correto
+        errorElement.style.display = 'none';
+        successElement.style.display = 'block';
+        
+        setTimeout(() => {
+          alert('✓ Cadastro realizado com sucesso!');
+          // Aqui você pode adicionar o código para enviar o formulário
+          // document.getElementById('registerForm').reset();
+          // generateCaptcha();
+        }, 500);
+        
+        return true;
+      } else {
+        // Captcha incorreto
+        successElement.style.display = 'none';
+        errorElement.style.display = 'block';
+        generateCaptcha(); // Gera novo código
+        document.getElementById('captchaInput').value = '';
+        document.getElementById('captchaInput').focus();
+        return false;
+      }
+    }
+
+    // Gera captcha ao carregar a página
+    window.addEventListener('load', function() {
+      generateCaptcha();
+    });
+
+    let tamanhoFonte = 1;
+
+    function alterarFonte(fator) {
+      tamanhoFonte = Math.max(0.7, tamanhoFonte + fator);
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button, label, input").forEach(el => {
+        el.style.fontSize = tamanhoFonte + "rem";
+      });
+      localStorage.setItem("tamanhoFonte", tamanhoFonte);
+    }
+
+    function aumentarFonte(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      alterarFonte(0.1);
+    }
+
+    function diminuirFonte(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      alterarFonte(-0.1);
+    }
+
+    function fontePadrao(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      tamanhoFonte = 1;
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button, label, input").forEach(el => {
+        el.style.fontSize = "1rem";
+      });
+      localStorage.setItem("tamanhoFonte", 1);
+    }
+
+    function alternarContraste(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const main = document.getElementById("main-container");
+      main.classList.toggle("high-contrast");
+      if (main.classList.contains("high-contrast")) {
+        localStorage.setItem("modoContraste", "ativo");
+      } else {
+        localStorage.setItem("modoContraste", "inativo");
+      }
+    }
+
+    function toggleAccessibilityMenu(event) {
+      event.stopPropagation();
+      document.getElementById("accessibilityDropdown").classList.toggle("show");
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      const overlay = document.getElementById("menuOverlay");
+      menu.classList.toggle("active");
+      overlay.classList.toggle("active");
+      document.body.style.overflow = menu.classList.contains("active") ? "hidden" : "auto";
+    }
+
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById("mobileMenu");
+      const menuButton = document.querySelector(".mobile-menu-button");
+      const accessibilityDropdown = document.querySelector(".relative");
+
+      if (menu.classList.contains("active") &&
+        !menu.contains(event.target) &&
+        !menuButton.contains(event.target)) {
+        toggleMobileMenu();
+      }
+
+      if (!accessibilityDropdown.contains(event.target)) {
+        document.getElementById("accessibilityDropdown").classList.remove("show");
+      }
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
+
+    window.addEventListener("load", () => {
+      const modoContraste = localStorage.getItem("modoContraste");
+      if (modoContraste === "ativo") {
+        document.getElementById("main-container").classList.add("high-contrast");
+      }
+
+      const tamanhoSalvo = parseFloat(localStorage.getItem("tamanhoFonte"));
+      if (tamanhoSalvo && !isNaN(tamanhoSalvo)) {
+        tamanhoFonte = tamanhoSalvo;
+        document.querySelectorAll("p, h1, h2, h3, a, li, span, button, label, input").forEach(el => {
+          el.style.fontSize = tamanhoFonte + "rem";
+        });
+      }
+    });
+  </script>
+  <script src="../components/ui.js"></script>`n</body>
+
 </html>

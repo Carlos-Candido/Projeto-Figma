@@ -1,31 +1,254 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redefinir Senha</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white min-h-screen flex items-center justify-center px-4">
-  <div class="w-full max-w-md">
-    <h1 class="text-4xl md:text-6xl font-bold mb-12 text-black text-center mx-auto">Redefinir Senha</h1>
 
-    <form class="space-y-6">
-      <div>
-        <label for="email" class="block text-black text-lg font-medium mb-1">Email:</label>
-        <input type="email" id="email" name="email" class="w-full border border-black h-9 px-3 text-black rounded-md" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Esqueci a Senha | AprendaJá</title>
+  <style>
+    .high-contrast {
+      background-color: black !important;
+      color: white !important;
+    }
+
+    .high-contrast .acc-btn,
+    .high-contrast .footer-btn,
+    .high-contrast .article-btn {
+      border: 0.5px solid white !important;
+    }
+
+    .high-contrast .nav-btn:hover,
+    .high-contrast .acc-btn:hover,
+    .high-contrast .footer-btn:hover,
+    .high-contrast .article-btn:hover {
+      border: 0.5px solid white !important;
+      background-color: black !important;
+    }
+
+    .high-contrast p,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast h3,
+    .high-contrast a,
+    .high-contrast li,
+    .high-contrast span,
+    .high-contrast button,
+    .high-contrast label,
+    .high-contrast input {
+      color: white !important;
+      background-color: black !important;
+      border-color: white !important;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .dropdown-content button {
+      color: black;
+      padding: 0.5rem 1rem;
+      display: block;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      border: 1px solid white;
+      background: none;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .high-contrast .dropdown-content button {
+      border: 0.5px solid white !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content {
+      background-color: transparent !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content button:hover {
+      border: 0.5px solid black !important;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: black;
+      z-index: 100;
+      padding: 1rem;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+      display: block;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-button {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white font-sans text-base transition-all duration-300">
+  <div id="main-container" class="min-h-screen flex flex-col">
+    <!-- Cabeçalho -->
+    <nav class="bg-black text-white px-6 py-3 flex flex-wrap justify-between items-center shadow-lg">
+      <div class="flex items-center space-x-4">
+        <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-20.png" alt="Logo"
+          class="h-12 w-auto rounded-full">
+        <a href="../Home/index.html" class="font-bold text-lg">AprendaJá</a>
       </div>
 
-      <button class="w-full bg-black text-white text-2xl py-3 font-normal block text-center rounded-md hover:bg-gray-800">
-        redefinir
-      </button>
-      
-    </form>
+      <!-- Dropdown de Acessibilidade -->
+      <div class="relative">
+        <button onclick="toggleAccessibilityMenu(event)"
+          class="acc-btn bg-gray-200 text-black px-2 py-2 rounded hover:bg-gray-300 flex items-center">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Acessibilidade
+        </button>
+        <div id="accessibilityDropdown" class="dropdown-content">
+          <button onclick="aumentarFonte(event)">Aumentar Fonte (A+)</button>
+          <button onclick="diminuirFonte(event)">Diminuir Fonte (A-)</button>
+          <button onclick="fontePadrao(event)">Fonte Padrão (A)</button>
+          <button onclick="alternarContraste(event)">Alternar Contraste</button>
+        </div>
+      </div>
+    </nav>
 
-    <div class="mt-6 flex justify-center text-sm">
-      <span class="text-black">Voltar ao</span>
-      <a href="../Login/index.html" class="text-blue-700 hover:underline px-3">Login</a>
-    </div>
+    <!-- Conteúdo Principal -->
+    <main class="flex-grow flex items-center justify-center px-4 py-8">
+      <div class="w-full max-w-md">
+        <h1 class="text-4xl md:text-6xl font-bold mb-12 text-black text-center mx-auto">Redefinir Senha</h1>
+
+        <form class="space-y-6">
+          <div>
+            <label for="email" class="block text-black text-lg font-medium mb-1">Email:</label>
+            <input type="email" id="email" name="email" class="w-full border border-black h-9 px-3 text-black rounded-md" />
+          </div>
+
+          <!-- Botão com borda branca -->
+          <button class="w-full bg-black border-2 border-white text-white text-2xl py-3 font-normal block text-center rounded-md hover:bg-gray-800 transition">
+            Redefinir
+          </button>
+        </form>
+
+        <!-- Link de Login com contraste -->
+        <div class="mt-6 flex justify-center text-sm">
+          <span class="text-black">Voltar ao</span>
+          <a href="../Login/index.html" 
+             class="text-blue-600 font-medium hover:underline hover:text-blue-700 px-3 transition">
+            Login
+          </a>
+        </div>
+      </div>
+    </main>
   </div>
-</body>
+
+  <script>
+    let tamanhoFonte = 1;
+
+    function alterarFonte(fator) {
+      tamanhoFonte = Math.max(0.7, tamanhoFonte + fator);
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button, label, input").forEach(el => {
+        el.style.fontSize = tamanhoFonte + "rem";
+      });
+      localStorage.setItem("tamanhoFonte", tamanhoFonte);
+    }
+
+    function aumentarFonte(event) {
+      event.preventDefault();
+      alterarFonte(0.1);
+    }
+
+    function diminuirFonte(event) {
+      event.preventDefault();
+      alterarFonte(-0.1);
+    }
+
+    function fontePadrao(event) {
+      event.preventDefault();
+      tamanhoFonte = 1;
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button, label, input").forEach(el => {
+        el.style.fontSize = "1rem";
+      });
+      localStorage.setItem("tamanhoFonte", 1);
+    }
+
+    function alternarContraste(event) {
+      event.preventDefault();
+      const main = document.getElementById("main-container");
+      main.classList.toggle("high-contrast");
+      if (main.classList.contains("high-contrast")) {
+        localStorage.setItem("modoContraste", "ativo");
+      } else {
+        localStorage.setItem("modoContraste", "inativo");
+      }
+    }
+
+    function toggleAccessibilityMenu(event) {
+      event.stopPropagation();
+      document.getElementById("accessibilityDropdown").classList.toggle("show");
+    }
+
+    window.addEventListener("load", () => {
+      const modoContraste = localStorage.getItem("modoContraste");
+      if (modoContraste === "ativo") {
+        document.getElementById("main-container").classList.add("high-contrast");
+      }
+
+      const tamanhoSalvo = parseFloat(localStorage.getItem("tamanhoFonte"));
+      if (tamanhoSalvo && !isNaN(tamanhoSalvo)) {
+        tamanhoFonte = tamanhoSalvo;
+        document.querySelectorAll("p, h1, h2, h3, a, li, span, button, label, input").forEach(el => {
+          el.style.fontSize = tamanhoFonte + "rem";
+        });
+      }
+    });
+  </script>
+  <script src="../components/ui.js"></script>`n</body>
+
 </html>

@@ -1,132 +1,462 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Dicas de Programação</title>
+  <title>Dicas | Plataforma de Cursos</title>
+  <style>
+    .high-contrast {
+      background-color: black !important;
+      color: white !important;
+    }
+
+    .high-contrast .acc-btn,
+    .high-contrast .footer-btn,
+    .high-contrast .article-btn {
+      border: 0.5px solid white !important;
+    }
+
+    .high-contrast .nav-btn:hover,
+    .high-contrast .acc-btn:hover,
+    .high-contrast .footer-btn:hover,
+    .high-contrast .article-btn:hover {
+      border: 0.5px solid white !important;
+      background-color: black !important;
+    }
+
+    .high-contrast p,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast h3,
+    .high-contrast a,
+    .high-contrast li,
+    .high-contrast span,
+    .high-contrast button {
+      color: white !important;
+      background-color: black !important;
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    .high-contrast .bg-gray-100,
+    .high-contrast .bg-gray-200 {
+      background-color: black !important;
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    .high-contrast .border-gray-300 {
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    /* Dropdown de acessibilidade */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      margin-top: 5px;
+    }
+
+    .dropdown-content button {
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      border: 1px solid white;
+      background: none;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .show {
+      display: block;
+    }
+
+    /* Contraste para dropdown */
+    .high-contrast .dropdown-content button {
+      border: 0.5px solid white !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content {
+      background-color: transparent !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content button:hover {
+      border: 0.5px solid black !important;
+    }
+
+    /* Menu mobile */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: black;
+      z-index: 100;
+      padding: 1rem;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+      display: block;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    /* Isola VLibras do modo contraste */
+    .high-contrast [vw],
+    .high-contrast [vw] * {
+      all: unset !important;
+      all: revert !important;
+      color: initial !important;
+      background-color: initial !important;
+      border-color: initial !important;
+      box-shadow: none !important;
+    }
+
+    .dica-container {
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    /* Estilo das dicas no modo alto contraste */
+    .high-contrast .dica-container {
+      border: 2px solid white !important;
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+
+    /* Estilo para imagens dentro das dicas no alto contraste */
+    .high-contrast .dica-container img {
+      border: 2px solid white !important;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-button {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white">
-  <div class="min-h-screen flex flex-col">
+
+<body class="bg-white font-sans text-base transition-all duration-300">
+  <div id="main-container" class="min-h-screen flex flex-col">
     <!-- Cabeçalho -->
-    <header class="bg-black text-white p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="flex items-center space-x-4">
-          <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-10.png" 
-               alt="Logo" 
-               class="h-12 w-auto rounded-full">
-          <h1 class="text-xl md:text-3xl font-bold">Dicas!</h1>
-        </div>
-        <a href="perfil.html"> <!-- Substitua por seu arquivo de perfil real -->
-          <img src="frame0.svg" 
-               alt="Perfil" 
-               class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-white p-1 hover:opacity-80 transition">
-        </a>
+    <nav class="bg-black text-white px-6 py-3 flex flex-wrap border-b-2 justify-between items-center top-0 z-50 shadow-lg"
+      id="Topo">
+      <div class="flex items-center space-x-4">
+        <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-20.png" alt="Logo"
+          class="h-12 w-auto rounded-full">
+        <a class="font-bold text-lg">Dicas!</a>
       </div>
-    </header>
+
+      <!-- Menu desktop -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="../Home/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Home</a>
+        <a href="../Cursos/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Cursos</a>
+        <a href="../Novidades/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Novidades</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <!-- Dropdown de Acessibilidade -->
+        <div class="relative">
+          <button onclick="toggleAccessibilityMenu(event)"
+            class="acc-btn bg-gray-200 text-black px-2 py-2 rounded hover:bg-gray-300 flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Acessibilidade
+          </button>
+          <div id="accessibilityDropdown" class="dropdown-content">
+            <button onclick="aumentarFonte(event)">Aumentar Fonte (A+)</button>
+            <button onclick="diminuirFonte(event)">Diminuir Fonte (A-)</button>
+            <button onclick="fontePadrao(event)">Fonte Padrão (A)</button>
+            <button onclick="alternarContraste(event)">Alternar Contraste</button>
+          </div>
+        </div>
+
+        <!-- Botão menu mobile -->
+        <button class="mobile-menu-button md:hidden text-white" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="flex flex-col space-y-4 p-4">
+        <a href="../Home/index.html" class="text-white hover:text-gray-300">Home</a>
+        <a href="../Cursos/index.html" class="text-white hover:text-gray-300">Cursos</a>
+        <a href="../Novidades/index.html" class="text-white hover:text-gray-300">Novidades</a>
+      </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Conteúdo Principal -->
     <main class="flex-grow container mx-auto p-4 md:p-6">
-      <!-- Botão Voltar -->
-      <a href="../Home/index.html" class="mb-6 inline-flex items-center text-blue-600 hover:text-blue-800 transition">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        Voltar
-      </a>
 
       <!-- Lista de Dicas -->
       <div class="space-y-6">
         <!-- Dica 1 -->
-        <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800">
-            Pseudocódigo: o segredo para dominar qualquer linguagem de programação
-          </h2>
-          <p class="text-gray-700 mb-2">
-            Você sabia que treinar lógica com pseudocódigo pode acelerar (e muito) o
-            seu aprendizado em qualquer linguagem?
-          </p>
-          <p class="text-gray-700">
-            No curso DevStart: Lógica de Programação, o uso do pseudocódigo serve
-            como uma ponte entre o raciocínio lógico e a codificação real.
-          </p>
-          <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
-        </div>
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden dica-container">
+          <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
+            <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800 text-center">
+              Pseudocódigo: o segredo para dominar qualquer linguagem de programação
+            </h2>
+            <p class="text-gray-700 mb-2 text-justify">
+              Você sabia que treinar lógica com pseudocódigo pode acelerar (e muito) o
+              seu aprendizado em qualquer linguagem?
+            </p>
+            <p class="text-gray-700 text-justify">
+              No curso DevStart: Lógica de Programação, o uso do pseudocódigo serve
+              como uma ponte entre o raciocínio lógico e a codificação real.
+            </p>
+            <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
+          </div>
+        </article>
 
         <!-- Dica 2 -->
-        <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800">
-            HTML semântico: por que ele melhora o SEO do seu site?
-          </h2>
-          <p class="text-gray-700">
-            Quem está fazendo o curso WebMaster: Criação de Sites com HTML, CSS e
-            JavaScript vai gostar de saber: o uso correto de tags semânticas não só
-            deixa seu código mais limpo, como ajuda o Google a entender do que seu
-            site trata.
-          </p>
-          <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
-        </div>
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden dica-container">
+          <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
+            <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800 text-center">
+              HTML semântico: por que ele melhora o SEO do seu site?
+            </h2>
+            <p class="text-gray-700 text-justify">
+              Quem está fazendo o curso WebMaster: Criação de Sites com HTML, CSS e
+              JavaScript vai gostar de saber: o uso correto de tags semânticas não só
+              deixa seu código mais limpo, como ajuda o Google a entender do que seu
+              site trata.
+            </p>
+            <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
+          </div>
+        </article>
 
-        <!-- Dica 3 -->
-        <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800">
-            Evite SELECT *: sua aplicação agradece!
-          </h2>
-          <p class="text-gray-700 mb-2">
-            No curso de Banco de Dados com SQL Server, uma das primeiras boas
-            práticas aprendidas é evitar o comando SELECT *.
-          </p>
-          <p class="text-gray-700">
-            Sempre que possível, selecione apenas as colunas que você realmente
-            precisa. Além de mais seguro, seu sistema vai rodar com muito mais
-            eficiência.
-          </p>
-          <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
-        </div>
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden dica-container">
+          <!-- Dica 3 -->
+          <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
+            <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800 text-center">
+              Evite SELECT: sua aplicação agradece!
+            </h2>
+            <p class="text-gray-700 mb-2 text-justify">
+              No curso de Banco de Dados com SQL Server, uma das primeiras boas
+              práticas aprendidas é evitar o comando SELECT *.
+            </p>
+            <p class="text-gray-700 text-justify">
+              Sempre que possível, selecione apenas as colunas que você realmente
+              precisa. Além de mais seguro, seu sistema vai rodar com muito mais
+              eficiência.
+            </p>
+            <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
+          </div>
+        </article>
 
         <!-- Dica 4 -->
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden dica-container">
         <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800">
+          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800 text-center">
             Atenção às condições em JavaScript: nem tudo que parece "vazio" é igual
           </h2>
-          <p class="text-gray-700 mb-2">
+          <p class="text-gray-700 mb-2 text-justify">
             Se você está aprendendo JavaScript no curso WebMaster, saiba que valores
             como false, 0, "", null, undefined e NaN são todos tratados
             como "falsos" em uma condição.
           </p>
-          <p class="text-gray-700">
+          <p class="text-gray-700 text-justify">
             Isso significa que uma estrutura simples como if (valor) pode não
             funcionar como esperado se você não estiver atento ao que está sendo
             testado.
           </p>
           <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
         </div>
+        </article>
 
         <!-- Dica 5 -->
+        <article class="bg-gray-100 rounded-lg shadow-md overflow-hidden dica-container">
         <div class="bg-gray-100 p-4 md:p-6 rounded-lg shadow-md">
-          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800">
+          <h2 class="text-lg md:text-xl font-bold mb-3 text-gray-800 text-center">
             Proteja seu banco de dados: evite SQL Injection com parâmetros
           </h2>
-          <p class="text-gray-700 mb-2">
+          <p class="text-gray-700 mb-2 text-justify">
             SQL Injection é uma das falhas mais exploradas por hackers. E a defesa é
             mais simples do que parece: use parâmetros ao montar suas queries.
           </p>
-          <p class="text-gray-700">
+          <p class="text-gray-700 text-justify">
             No curso Banco de Dados com SQL Server, você aprende a substituir a
             concatenação de strings por comandos parametrizados.
           </p>
           <p class="text-sm text-gray-500 mt-3">Publicado em 09/04/2025</p>
         </div>
+        </article>
       </div>
     </main>
 
     <!-- Rodapé -->
-    <footer class="bg-gray-200 py-4 mt-8">
-      <div class="container mx-auto text-center">
-        <p class="font-bold">(17) 99456-7890</p>
-        <p class="font-bold">Dev.site@gmail.com</p>
-      </div>
+    <footer
+      class="py-4 text-center relative border-t-2 bg-gray-100 [body.high-contrast_&]:bg-black [body.high-contrast_&]:text-white">
+      <p class="font-bold">(17) 99456-7890</p>
+      <p class="font-bold mt-2">Dev.site@gmail.com</p>
+      <a href="#Topo"
+        class="inline-block font-bold bg-black text-white px-4 py-2 rounded-full border border-transparent transition hover:bg-gray-800 mt-2 [body.high-contrast_&]:bg-black [body.high-contrast_&]:text-white [body.high-contrast_&]:border-white [body.high-contrast_&]:hover:bg-gray-800">Voltar
+        para cima ↑</a>
     </footer>
   </div>
-</body>
+
+  <!-- Widget VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <script>
+    let tamanhoFonte = 1; // rem padrão
+
+    function alterarFonte(fator) {
+      tamanhoFonte = Math.max(0.7, tamanhoFonte + fator);
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+        el.style.fontSize = tamanhoFonte + "rem";
+      });
+      localStorage.setItem("tamanhoFonte", tamanhoFonte);
+    }
+
+    function aumentarFonte(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      alterarFonte(0.1);
+    }
+
+    function diminuirFonte(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      alterarFonte(-0.1);
+    }
+
+    function fontePadrao(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      tamanhoFonte = 1;
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+        el.style.fontSize = "1rem";
+      });
+      localStorage.setItem("tamanhoFonte", 1);
+    }
+
+    function alternarContraste(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const main = document.getElementById("main-container");
+      main.classList.toggle("high-contrast");
+
+      if (main.classList.contains("high-contrast")) {
+        localStorage.setItem("modoContraste", "ativo");
+      } else {
+        localStorage.setItem("modoContraste", "inativo");
+      }
+    }
+
+    function toggleAccessibilityMenu(event) {
+      event.stopPropagation();
+      document.getElementById("accessibilityDropdown").classList.toggle("show");
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      const overlay = document.getElementById("menuOverlay");
+      menu.classList.toggle("active");
+      overlay.classList.toggle("active");
+      document.body.style.overflow = menu.classList.contains("active") ? "hidden" : "auto";
+    }
+
+    // Fecha os dropdowns quando clicar fora
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById("mobileMenu");
+      const menuButton = document.querySelector(".mobile-menu-button");
+      const accessibilityDropdown = document.querySelector(".relative");
+
+      // Fecha o menu mobile se clicou fora
+      if (menu.classList.contains("active") &&
+        !menu.contains(event.target) &&
+        !menuButton.contains(event.target)) {
+        toggleMobileMenu();
+      }
+
+      // Fecha o dropdown de acessibilidade se clicou fora
+      if (!accessibilityDropdown.contains(event.target)) {
+        document.getElementById("accessibilityDropdown").classList.remove("show");
+      }
+    });
+
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });
+
+    // Aplica configurações salvas no carregamento
+    window.addEventListener("load", () => {
+      // Aplica contraste
+      const modoContraste = localStorage.getItem("modoContraste");
+      if (modoContraste === "ativo") {
+        document.getElementById("main-container").classList.add("high-contrast");
+      }
+
+      // Aplica tamanho da fonte
+      const tamanhoSalvo = parseFloat(localStorage.getItem("tamanhoFonte"));
+      if (tamanhoSalvo && !isNaN(tamanhoSalvo)) {
+        tamanhoFonte = tamanhoSalvo;
+        document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+          el.style.fontSize = tamanhoFonte + "rem";
+        });
+      }
+    });
+  </script>
+  <script src="../components/ui.js"></script>`n</body>
+
 </html>

@@ -1,0 +1,813 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>DevStart: Lógica de Programação | AprendaJá</title>
+  <style>
+    .high-contrast {
+      background-color: black !important;
+      color: white !important;
+    }
+
+    .high-contrast .acc-btn,
+    .high-contrast .footer-btn,
+    .high-contrast .article-btn {
+      border: 0.5px solid white !important;
+    }
+
+    .high-contrast .nav-btn:hover,
+    .high-contrast .acc-btn:hover,
+    .high-contrast .footer-btn:hover,
+    .high-contrast .article-btn:hover {
+      border: 0.5px solid white !important;
+      background-color: black !important;
+    }
+
+    .high-contrast p,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast h3,
+    .high-contrast a,
+    .high-contrast li,
+    .high-contrast span,
+    .high-contrast button {
+      color: white !important;
+      background-color: black !important;
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    .high-contrast .bg-gray-100,
+    .high-contrast .bg-gray-200 {
+      background-color: black !important;
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    .high-contrast .border-gray-300 {
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    /* Dropdown de acessibilidade */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      margin-top: 5px;
+    }
+
+    .dropdown-content button {
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      border: 1px solid white;
+      background: none;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .show {
+      display: block;
+    }
+
+    /* Contraste para dropdown */
+    .high-contrast .dropdown-content button {
+      border: 0.5px solid white !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content {
+      background-color: transparent !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content button:hover {
+      border: 0.5px solid black !important;
+    }
+
+    /* Menu mobile */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: black;
+      z-index: 100;
+      padding: 1rem;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+      display: block;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .star {
+      color: #D9D9D9;
+      transition: color 0.2s;
+    }
+
+    .star.filled {
+      color: #FFD700;
+    }
+
+    .star:hover,
+    .star.hover {
+      color: #FFA500;
+    }
+
+    .rating-section {
+      background: #F9F9F9;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .high-contrast .rating-section {
+      background: black !important;
+      border: 2px solid white !important;
+    }
+
+    .curso-content {
+      line-height: 1.8;
+    }
+
+    .curso-content h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .curso-content ul {
+      list-style: disc;
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .curso-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-enroll {
+      background-color: #000;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .btn-enroll:hover {
+      background-color: #333;
+      transform: translateY(-2px);
+    }
+
+    .high-contrast .btn-enroll {
+      border: 2px solid white !important;
+    }
+
+    .comment-card {
+      background: white;
+      transition: transform 0.2s;
+    }
+
+    .comment-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .high-contrast .comment-card,
+    .high-contrast input,
+    .high-contrast textarea {
+      background: black !important;
+      border: 2px solid white !important;
+      color: white !important;
+    }
+
+    .high-contrast .mb-8 {
+      background: black !important;
+      border: 2px solid white !important;
+    }
+
+    .high-contrast input::placeholder,
+    .high-contrast textarea::placeholder {
+      color: #999 !important;
+    }
+
+    /* Isola VLibras do modo contraste */
+    .high-contrast [vw],
+    .high-contrast [vw] * {
+      all: unset !important;
+      all: revert !important;
+      color: initial !important;
+      background-color: initial !important;
+      border-color: initial !important;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main-container" class="min-h-screen flex flex-col">
+    <!-- Cabeçalho -->
+    <nav class="bg-black text-white px-6 py-3 flex flex-wrap border-b-2 justify-between items-center top-0 z-50 shadow-lg"
+      id="Topo">
+      <div class="flex items-center space-x-4">
+        <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-20.png" alt="Logo"
+          class="h-12 w-auto rounded-full">
+        <a href="../Login/index.html" class="font-bold text-lg">InfoCursos</a>
+      </div>
+
+      <!-- Menu desktop -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="../Home/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Home</a>
+        <a href="../Dicas/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Dicas</a>
+        <a href="../Novidades/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Novidades</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <!-- Dropdown de Acessibilidade -->
+        <div class="relative">
+          <button onclick="toggleAccessibilityMenu(event)"
+            class="acc-btn bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300 flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Acessibilidade
+          </button>
+          <div id="accessibilityDropdown" class="dropdown-content">
+            <button onclick="aumentarFonte(event)">Aumentar Fonte (A+)</button>
+            <button onclick="diminuirFonte(event)">Diminuir Fonte (A-)</button>
+            <button onclick="fontePadrao(event)">Fonte Padrão (A)</button>
+            <button onclick="alternarContraste(event)">Alternar Contraste</button>
+          </div>
+        </div>
+
+        <!-- Botão menu mobile -->
+        <button class="mobile-menu-button md:hidden text-white" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="flex flex-col space-y-4 p-4">
+        <a href="../Home/index.html" class="text-white hover:text-gray-300">Home</a>
+        <a href="../Dicas/index.html" class="text-white hover:text-gray-300">Dicas</a>
+        <a href="../Novidades/index.html" class="text-white hover:text-gray-300">Novidades</a>
+      </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow container mx-auto p-4 space-y-8">
+      <div class="w-11/12 max-w-4xl mx-auto">
+
+        <!-- Imagem do Curso -->
+        <div class="mb-8">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 300'%3E%3Cdefs%3E%3ClinearGradient id='g12' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FF6F00;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%23673AB7;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='500' height='300' fill='url(%23g12)'/%3E%3Ccircle cx='150' cy='100' r='12' fill='white' opacity='0.8'/%3E%3Ccircle cx='200' cy='120' r='12' fill='white' opacity='0.8'/%3E%3Ccircle cx='250' cy='90' r='12' fill='white' opacity='0.8'/%3E%3Ccircle cx='300' cy='110' r='12' fill='white' opacity='0.8'/%3E%3Ccircle cx='350' cy='95' r='12' fill='white' opacity='0.8'/%3E%3Cpath d='M150,100 Q175,80 200,120 T250,90 T300,110 T350,95' fill='none' stroke='%2300E676' stroke-width='3'/%3E%3Cpath d='M120,180 L140,160 M160,180 L180,160 M200,180 L220,160' stroke='white' stroke-width='4' opacity='0.6'/%3E%3Ctext x='250' y='230' font-family='Arial' font-size='32' font-weight='bold' fill='white' text-anchor='middle'%3EMachine Learning%3C/text%3E%3Ctext x='250' y='265' font-family='monospace' font-size='18' fill='%2300E676' text-anchor='middle'%3Emodel.fit(X, y)%3C/text%3E%3C/svg%3E" 
+               alt="Machine Learning com Python" 
+               class="w-full rounded-lg shadow-lg">
+        </div>
+
+        <!-- Título e Badge -->
+        <div class="mb-6">
+          <span class="inline-block bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-4">Iniciante</span>
+          <h1 class="text-4xl font-bold mb-4">DevStart: Lógica de Programação</h1>
+          <p class="text-xl text-gray-700">Dê os primeiros passos na carreira de tecnologia com um curso completo de lógica de programação.</p>
+        </div>
+
+        <!-- Botão de Inscrição -->
+        <div>
+          <a href="#" class="btn-enroll">Inscrever-se no Curso</a>
+        </div>
+
+        <!-- Conteúdo do Curso -->
+        <div class="curso-content">
+          <h2>Sobre o Curso</h2>
+          <p>
+            O curso DevStart é perfeito para quem está começando na programação. Aprenda os fundamentos da lógica de programação
+            de forma prática e objetiva, desenvolvendo a base necessária para qualquer linguagem de programação.
+          </p>
+
+          <h2>O que você vai aprender</h2>
+          <ul>
+            <li>Conceitos fundamentais de algoritmos</li>
+            <li>Estruturas de controle (if, else, switch)</li>
+            <li>Laços de repetição (for, while, do-while)</li>
+            <li>Vetores e matrizes</li>
+            <li>Funções e procedimentos</li>
+            <li>Lógica booleana e operadores</li>
+            <li>Resolução de problemas práticos</li>
+            <li>Boas práticas de programação</li>
+          </ul>
+
+          <h2>Para quem é este curso</h2>
+          <ul>
+            <li>Iniciantes em programação</li>
+            <li>Estudantes que querem reforçar a base</li>
+            <li>Profissionais em transição de carreira</li>
+            <li>Curiosos sobre tecnologia</li>
+          </ul>
+
+          <h2>Requisitos</h2>
+          <ul>
+            <li>Nenhum conhecimento prévio necessário</li>
+            <li>Computador com acesso à internet</li>
+            <li>Vontade de aprender</li>
+          </ul>
+        </div>
+
+        <!-- Seção de Avaliação -->
+        <div class="rating-section">
+          <h2 class="text-2xl font-bold mb-4">Rate Content</h2>
+          <p class="mb-4">Como você avalia este curso?</p>
+          
+          <div class="star-rating mb-6" id="star-rating">
+            <span class="star" data-rating="1">★</span>
+            <span class="star" data-rating="2">★</span>
+            <span class="star" data-rating="3">★</span>
+            <span class="star" data-rating="4">★</span>
+            <span class="star" data-rating="5">★</span>
+          </div>
+
+          <div id="rating-message" class="text-lg font-semibold hidden mb-4"></div>
+
+          <div class="mt-6">
+            <h3 class="font-bold mb-2">Avaliação Média</h3>
+            <div class="flex items-center gap-4">
+              <div class="text-4xl font-bold" id="avg-rating">0.0</div>
+              <div>
+                <div class="flex text-2xl" id="avg-stars">
+                  ★★★★★
+                </div>
+                <div class="text-sm text-gray-600" id="total-ratings">0 avaliações</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Seção de Comentários -->
+        <div class="rating-section mt-8">
+          <h2 class="text-2xl font-bold mb-6">Comentários dos Alunos</h2>
+          
+          <!-- Formulário para novo comentário -->
+          <div class="mb-8 p-6 bg-white rounded-lg shadow-md border-2 border-gray-300">
+            <h3 class="font-bold mb-4">Deixe seu comentário</h3>
+            <div class="mb-4">
+              <input type="text" id="comment-name" placeholder="Seu nome" 
+                     class="w-full p-3 border-2 border-gray-300 rounded-lg mb-3 focus:border-black focus:outline-none">
+              <textarea id="comment-text" placeholder="Escreva seu comentário aqui..." 
+                        rows="4" 
+                        class="w-full p-3 border-2 border-gray-300 rounded-lg resize-none focus:border-black focus:outline-none"></textarea>
+            </div>
+            <button onclick="addComment()" class="btn-enroll">
+              Publicar Comentário
+            </button>
+          </div>
+
+          <!-- Lista de comentários -->
+          <div id="comments-list" class="space-y-4">
+            <!-- Comentários serão inseridos aqui -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer
+      class="py-4 text-center relative bg-gray-200 border-t-2 border-transparent [body.high-contrast_&]:bg-black [body.high-contrast_&]:text-white [body.high-contrast_&]:border-white">
+      <p class="font-bold">(17) 99456-7890</p>
+      <p class="font-bold mt-2">Dev.site@gmail.com</p>
+      <a href="#Topo"
+        class="inline-block font-bold bg-black text-white px-4 py-2 rounded-full border border-transparent transition hover:bg-gray-800 mt-2 [body.high-contrast_&]:bg-black [body.high-contrast_&]:text-white [body.high-contrast_&]:border-white [body.high-contrast_&]:hover:bg-gray-800">Voltar
+        para cima ↑</a>
+    </footer>
+  </div>
+
+  <!-- Widget VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <script>
+      const mainContainer = document.getElementById('main-container');
+      const stars = document.querySelectorAll('.star');
+      const ratingMessage = document.getElementById('rating-message');
+      const courseId = 'devstart';
+
+      // Comentários iniciais (exemplos)
+      const initialComments = [
+        {
+          name: "Maria Silva",
+          text: "Excelente curso! A didática é muito clara e os exemplos práticos ajudam muito no aprendizado. Recomendo!",
+          date: "2024-10-20",
+          likes: 15
+        },
+        {
+          name: "João Santos",
+          text: "Estou adorando! Nunca imaginei que programação pudesse ser tão interessante. O professor explica muito bem!",
+          date: "2024-10-18",
+          likes: 8
+        },
+        {
+          name: "Ana Costa",
+          text: "Curso perfeito para iniciantes. Comecei do zero e já estou conseguindo criar meus próprios algoritmos.",
+          date: "2024-10-15",
+          likes: 12
+        },
+        {
+          name: "Pedro Oliveira",
+          text: "Material de apoio muito completo e exercícios bem elaborados. Valeu cada minuto investido!",
+          date: "2024-10-12",
+          likes: 6
+        }
+      ];
+
+      // Carregar comentários
+      function loadComments() {
+        let comments = JSON.parse(localStorage.getItem(`comments_${courseId}`) || '[]');
+        
+        // Se não houver comentários salvos, usar os iniciais
+        if (comments.length === 0) {
+          comments = initialComments;
+          localStorage.setItem(`comments_${courseId}`, JSON.stringify(comments));
+        }
+
+        displayComments(comments);
+      }
+
+      // Exibir comentários
+      function displayComments(comments) {
+        const commentsList = document.getElementById('comments-list');
+        commentsList.innerHTML = '';
+
+        if (comments.length === 0) {
+          commentsList.innerHTML = '<p class="text-gray-500 text-center py-8">Seja o primeiro a comentar!</p>';
+          return;
+        }
+
+        comments.reverse().forEach((comment, index) => {
+          const commentDiv = document.createElement('div');
+          commentDiv.className = 'comment-card p-6 bg-white rounded-lg shadow-md ';
+          commentDiv.innerHTML = `
+            <div class="flex items-start justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-xl">
+                  ${comment.name.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg">${comment.name}</h4>
+                  <p class="text-sm text-gray-500">${formatDate(comment.date)}</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">${comment.text}</p>
+            <div class="flex items-center gap-4 pt-3 border-t border-gray-200">
+              <button onclick="likeComment(${comments.length - 1 - index})" class="flex items-center gap-2 text-gray-600 hover:text-black transition">
+                <span class="text-xl">👍</span>
+                <span id="likes-${comments.length - 1 - index}" class="font-semibold">${comment.likes || 0}</span>
+              </button>
+            </div>
+          `;
+          commentsList.appendChild(commentDiv);
+        });
+      }
+
+      // Adicionar novo comentário
+      function addComment() {
+        const nameInput = document.getElementById('comment-name');
+        const textInput = document.getElementById('comment-text');
+        
+        const name = nameInput.value.trim();
+        const text = textInput.value.trim();
+
+        if (!name || !text) {
+          alert('Por favor, preencha seu nome e comentário!');
+          return;
+        }
+
+        const newComment = {
+          name: name,
+          text: text,
+          date: new Date().toISOString().split('T')[0],
+          likes: 0
+        };
+
+        let comments = JSON.parse(localStorage.getItem(`comments_${courseId}`) || '[]');
+        comments.push(newComment);
+        localStorage.setItem(`comments_${courseId}`, JSON.stringify(comments));
+
+        // Limpar formulário
+        nameInput.value = '';
+        textInput.value = '';
+
+        // Recarregar comentários
+        loadComments();
+
+        // Scroll para o novo comentário
+        setTimeout(() => {
+          document.getElementById('comments-list').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+
+      // Curtir comentário
+      function likeComment(index) {
+        let comments = JSON.parse(localStorage.getItem(`comments_${courseId}`) || '[]');
+        
+        if (comments[index]) {
+          comments[index].likes = (comments[index].likes || 0) + 1;
+          localStorage.setItem(`comments_${courseId}`, JSON.stringify(comments));
+          
+          // Atualizar apenas o contador
+          document.getElementById(`likes-${index}`).textContent = comments[index].likes;
+        }
+      }
+
+      // Formatar data
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return 'Hoje';
+        if (diffDays === 1) return 'Ontem';
+        if (diffDays < 7) return `${diffDays} dias atrás`;
+        if (diffDays < 30) return `${Math.floor(diffDays / 7)} semanas atrás`;
+        
+        return date.toLocaleDateString('pt-BR');
+      }
+
+      // Sistema de avaliação por estrelas
+      stars.forEach(star => {
+        star.addEventListener('click', function() {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          setRating(rating);
+          saveRating(courseId, rating);
+        });
+
+        star.addEventListener('mouseenter', function() {
+          const rating = parseInt(this.getAttribute('data-rating'));
+          highlightStars(rating);
+        });
+      });
+
+      document.getElementById('star-rating').addEventListener('mouseleave', function() {
+        const savedRating = getRating(courseId);
+        if (savedRating) {
+          highlightStars(savedRating);
+        } else {
+          clearStars();
+        }
+      });
+
+      function highlightStars(rating) {
+        stars.forEach((star, index) => {
+          if (index < rating) {
+            star.classList.add('filled');
+          } else {
+            star.classList.remove('filled');
+          }
+        });
+      }
+
+      function clearStars() {
+        stars.forEach(star => {
+          star.classList.remove('filled');
+        });
+      }
+
+      function setRating(rating) {
+        highlightStars(rating);
+        const messages = {
+          1: '😞 Que pena! Como podemos melhorar?',
+          2: '😕 Esperávamos mais. O que faltou?',
+          3: '😊 Bom! Obrigado pelo feedback!',
+          4: '😃 Muito bom! Ficamos felizes!',
+          5: '🌟 Excelente! Você é incrível!'
+        };
+        ratingMessage.textContent = messages[rating];
+        ratingMessage.classList.remove('hidden');
+      }
+
+      function saveRating(courseId, rating) {
+        const ratings = JSON.parse(localStorage.getItem('courseRatings') || '{}');
+        if (!ratings[courseId]) {
+          ratings[courseId] = [];
+        }
+        ratings[courseId].push(rating);
+        localStorage.setItem('courseRatings', JSON.stringify(ratings));
+        updateAverageRating(courseId);
+      }
+
+      function getRating(courseId) {
+        const ratings = JSON.parse(localStorage.getItem('courseRatings') || '{}');
+        if (ratings[courseId] && ratings[courseId].length > 0) {
+          return ratings[courseId][ratings[courseId].length - 1];
+        }
+        return null;
+      }
+
+      function updateAverageRating(courseId) {
+        const ratings = JSON.parse(localStorage.getItem('courseRatings') || '{}');
+        if (ratings[courseId] && ratings[courseId].length > 0) {
+          const sum = ratings[courseId].reduce((a, b) => a + b, 0);
+          const avg = (sum / ratings[courseId].length).toFixed(1);
+          document.getElementById('avg-rating').textContent = avg;
+          document.getElementById('total-ratings').textContent = `${ratings[courseId].length} ${ratings[courseId].length === 1 ? 'avaliação' : 'avaliações'}`;
+          
+          const avgStars = document.getElementById('avg-stars');
+          const fullStars = Math.floor(avg);
+          let starsHtml = '';
+          for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+              starsHtml += '<span style="color: #FFD700;">★</span>';
+            } else {
+              starsHtml += '<span style="color: #D9D9D9;">★</span>';
+            }
+          }
+          avgStars.innerHTML = starsHtml;
+        }
+      }
+
+      // Carregar avaliação salva
+      window.addEventListener('DOMContentLoaded', () => {
+        const savedRating = getRating(courseId);
+        if (savedRating) {
+          highlightStars(savedRating);
+          setRating(savedRating);
+        }
+        updateAverageRating(courseId);
+        
+        // Carregar comentários
+        loadComments();
+      });
+
+      // Acessibilidade
+      let tamanhoFonte = 1;
+
+      function alterarFonte(fator) {
+        tamanhoFonte = Math.max(0.7, tamanhoFonte + fator);
+        document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+          el.style.fontSize = tamanhoFonte + "rem";
+        });
+        localStorage.setItem("tamanhoFonte", tamanhoFonte);
+      }
+
+      function aumentarFonte(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        alterarFonte(0.1);
+      }
+
+      function diminuirFonte(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        alterarFonte(-0.1);
+      }
+
+      function fontePadrao(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        tamanhoFonte = 1;
+        document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+          el.style.fontSize = "1rem";
+        });
+        localStorage.setItem("tamanhoFonte", 1);
+      }
+
+      function alternarContraste(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const main = document.getElementById("main-container");
+        main.classList.toggle("high-contrast");
+        if (main.classList.contains("high-contrast")) {
+          localStorage.setItem("modoContraste", "ativo");
+        } else {
+          localStorage.setItem("modoContraste", "inativo");
+        }
+      }
+
+      function toggleAccessibilityMenu(event) {
+        event.stopPropagation();
+        document.getElementById("accessibilityDropdown").classList.toggle("show");
+      }
+
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const overlay = document.getElementById("menuOverlay");
+        menu.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.style.overflow = menu.classList.contains("active") ? "hidden" : "auto";
+      }
+
+      // Fechar dropdown ao clicar fora
+      window.onclick = function (event) {
+        if (!event.target.matches('.acc-btn') && !event.target.closest('.acc-btn')) {
+          const dropdowns = document.getElementsByClassName("dropdown-content");
+          for (let i = 0; i < dropdowns.length; i++) {
+            const openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+
+      function toggleContrast() {
+        alternarContraste({ preventDefault: () => { }, stopPropagation: () => { } });
+      }
+
+      function increaseFontSize() {
+        aumentarFonte({ preventDefault: () => { }, stopPropagation: () => { } });
+      }
+
+      function decreaseFontSize() {
+        diminuirFonte({ preventDefault: () => { }, stopPropagation: () => { } });
+      }
+
+      function toggleMenu() {
+        toggleMobileMenu();
+      }
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const isHighContrast = localStorage.getItem('modoContraste') === 'ativo';
+        const savedFontSize = localStorage.getItem('tamanhoFonte');
+
+        if (isHighContrast) {
+          mainContainer.classList.add('high-contrast');
+        }
+
+        if (savedFontSize) {
+          tamanhoFonte = parseFloat(savedFontSize);
+          document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+            el.style.fontSize = tamanhoFonte + "rem";
+          });
+        }
+      });
+    </script>
+  </div>
+</body>
+
+</html>
+

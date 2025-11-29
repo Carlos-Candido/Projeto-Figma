@@ -1,148 +1,427 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Novidades | Plataforma de Cursos</title>
+  <style>
+    .high-contrast {
+      background-color: black !important;
+      color: white !important;
+    }
+
+    .high-contrast .acc-btn,
+    .high-contrast .footer-btn,
+    .high-contrast .article-btn {
+      border: 0.5px solid white !important;
+    }
+
+    .high-contrast .nav-btn:hover,
+    .high-contrast .acc-btn:hover,
+    .high-contrast .footer-btn:hover,
+    .high-contrast .article-btn:hover {
+      border: 0.5px solid white !important;
+      background-color: black !important;
+    }
+
+    .high-contrast p,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast h3,
+    .high-contrast a,
+    .high-contrast li,
+    .high-contrast span,
+    .high-contrast button {
+      color: white !important;
+      background-color: black !important;
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    .high-contrast .bg-gray-100,
+    .high-contrast .bg-gray-200 {
+      background-color: black !important;
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    .high-contrast .border-gray-300 {
+      border-color: white !important;
+      border-radius: 1 rem;
+    }
+
+    /* Dropdown de acessibilidade */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      margin-top: 5px;
+    }
+
+    .dropdown-content button {
+      color: black;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      border: 1px solid white;
+      background: none;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .show {
+      display: block;
+    }
+
+    /* Contraste para dropdown */
+    .high-contrast .dropdown-content button {
+      border: 0.5px solid white !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content {
+      background-color: transparent !important;
+      margin: 2px 0;
+    }
+
+    .high-contrast .dropdown-content button:hover {
+      border: 0.5px solid black !important;
+    }
+
+    /* Menu mobile */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: black;
+      z-index: 100;
+      padding: 1rem;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+      display: block;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    /* Isola VLibras do modo contraste */
+    .high-contrast [vw],
+    .high-contrast [vw] * {
+      all: unset !important;
+      all: revert !important;
+      color: initial !important;
+      background-color: initial !important;
+      border-color: initial !important;
+      box-shadow: none !important;
+    }
+
+    .dica-container {
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    /* Estilo das dicas no modo alto contraste */
+    .high-contrast .dica-container {
+      border: 2px solid white !important;
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+
+    /* Estilo para imagens dentro das dicas no alto contraste */
+    .high-contrast .dica-container img {
+      border: 2px solid white !important;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-menu-button {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white">
-  <div class="min-h-screen flex flex-col">
+
+<body class="bg-white font-sans text-base transition-all duration-300">
+  <div id="main-container" class="min-h-screen flex flex-col">
     <!-- Cabeçalho -->
-    <header class="bg-black text-white p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="flex items-center space-x-4">
-          <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-10.png" 
-               alt="Logo" 
-               class="h-12 w-auto rounded-full">
-          <h1 class="text-xl md:text-3xl font-bold">Novidades!</h1>
-        </div>
-        <!-- Link para a página de perfil -->
-        <a href="perfil.html"> <!-- Substitua por seu arquivo de perfil real -->
-          <img src="frame0.svg" 
-               alt="Perfil" 
-               class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-white p-1 hover:opacity-80 transition">
-        </a>
+    <nav
+      class="bg-black text-white px-6 py-3 flex flex-wrap border-b-2 justify-between items-center top-0 z-50 shadow-lg"
+      id="Topo">
+      <div class="flex items-center space-x-4">
+        <img src="freepik-logo-for-a-tech-school-a-binary-code-stream-cascad-82929-10.png" alt="Logo"
+          class="h-12 w-auto rounded-full">
+        <a class="font-bold text-lg">Novidades!</a>
       </div>
-    </header>
+
+      <!-- Menu desktop -->
+      <div class="hidden md:flex items-center space-x-4">
+        <a href="../Home/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Home</a>
+        <a href="../Cursos/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Cursos</a>
+        <a href="../Dicas/index.html"
+          class="nav-btn px-4 py-2 rounded-full bg-white text-black hover:bg-gray-200 transition">Dicas</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <!-- Dropdown de Acessibilidade -->
+        <div class="relative">
+          <button onclick="toggleAccessibilityMenu(event)"
+            class="acc-btn bg-gray-200 text-black px-2 py-2 rounded hover:bg-gray-300 flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Acessibilidade
+          </button>
+          <div id="accessibilityDropdown" class="dropdown-content">
+            <button onclick="aumentarFonte(event)">Aumentar Fonte (A+)</button>
+            <button onclick="diminuirFonte(event)">Diminuir Fonte (A-)</button>
+            <button onclick="fontePadrao(event)">Fonte Padrão (A)</button>
+            <button onclick="alternarContraste(event)">Alternar Contraste</button>
+          </div>
+        </div>
+
+        <!-- Botão menu mobile -->
+        <button class="mobile-menu-button md:hidden text-white" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="flex flex-col space-y-4 p-4">
+        <a href="../Home/index.html" class="text-white hover:text-gray-300">Home</a>
+        <a href="../Cursos/index.html" class="text-white hover:text-gray-300">Cursos</a>
+        <a href="../Dicas/index.html" class="text-white hover:text-gray-300">Dicas</a>
+      </div>
+    </div>
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Conteúdo Principal -->
     <main class="flex-grow container mx-auto p-4 md:p-6">
-      <!-- Botão Voltar -->
-      <a href="../Home/index.html" class="mb-6 inline-flex items-center text-blue-600 hover:text-blue-800 transition">
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        Voltar
-      </a>
-
       <!-- Lista Vertical de Novidades -->
       <div class="space-y-8">
         <!-- Novidade 1 -->
-        <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-md">
+        <article
+          class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-md novidade-container">
           <img src="image0.png" alt="Curso DevStart" class="w-full md:w-1/3 h-500 object-cover">
           <div class="p-4 md:w-2/3">
-            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800">
+            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800 text-center">
               [NOVIDADE] Curso DevStart: Lógica de Programação disponível na plataforma!
             </h2>
-            <p class="text-gray-700 mb-3">
+            <p class="text-gray-700 mb-3 text-justify">
               Então o DevStart é o ponto de partida ideal para você dar os primeiros passos com segurança, clareza e
               motivação. Este curso foi especialmente desenvolvido para iniciantes que desejam entender como os
-              computadores “pensam”, explorando os princípios fundamentais da lógica de programação.
-
-              Através de uma abordagem acessível e didática, você vai aprender como os programas são construídos, como
-              os algoritmos funcionam e como transformar ideias em soluções usando raciocínio lógico. O curso mostra,
-              passo a passo, como resolver problemas com clareza e eficiência — habilidades essenciais para qualquer
-              área da tecnologia.
-
-              Você terá contato com conceitos fundamentais, como variáveis, estruturas de decisão, repetições,
-              operadores lógicos e muito mais, tudo aplicado com exemplos práticos e exercícios em pseudocódigo,
-              JavaScript e Python. A proposta é fazer você entender a lógica por trás da programação antes mesmo de se
-              aprofundar em linguagens complexas.
-
-              Seja qual for o seu objetivo — seguir carreira como desenvolvedor, migrar para a área de tecnologia ou
-              apenas aprender uma habilidade valiosa — o DevStart vai te ajudar a construir uma base sólida e duradoura.
-              Comece com o pé direito no universo da programação!
+              computadores "pensam", explorando os princípios fundamentais da lógica de programação.
             </p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">Publicado em 09/04/2025</span>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Novidade 2 -->
-        <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-md">
+        <article
+          class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-md novidade-container">
           <img src="image1.png" alt="Curso WebMaster" class="w-full md:w-1/3 h-500 object-cover">
           <div class="p-4 md:w-2/3">
-            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800">
+            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800 text-center">
               [ATUALIZAÇÃO] WebMaster: agora com módulo de design responsivo!
             </h2>
-            <p class="text-gray-700 mb-3">
+            <p class="text-gray-700 mb-3 text-justify">
               Voltado à criação de sites com HTML, CSS e JavaScript, o WebMaster é o curso ideal para quem deseja
               aprender a desenvolver páginas completas, do zero à aplicação prática. E agora ele acaba de receber uma
               atualização incrível: um módulo extra totalmente dedicado ao design responsivo!
-
-              Com esse novo conteúdo, você vai aprender a criar sites que se adaptam perfeitamente a qualquer tipo de
-              tela, desde smartphones e tablets até notebooks e monitores widescreen. Esse é um passo essencial para
-              quem deseja se destacar no mercado, já que a navegação móvel domina a maior parte do acesso à internet
-              atualmente.
-
-              O módulo ensina, de forma clara e prática, como utilizar media queries, unidades flexíveis, grids e
-              técnicas modernas de layout responsivo, além de boas práticas de usabilidade e acessibilidade. Tudo isso
-              sem perder a essência do curso, que continua ensinando como estruturar páginas com HTML, estilizar com CSS
-              e adicionar interatividade com JavaScript.
-
-              Se você já está fazendo o curso, é a oportunidade perfeita para expandir seus conhecimentos. E se ainda
-              não começou, agora é o melhor momento para aprender a criar sites modernos, bonitos, funcionais e prontos
-              para todos os dispositivos.
             </p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">Publicado em 08/04/2025</span>
             </div>
           </div>
-        </div>
+        </article>
 
         <!-- Novidade 3 -->
-        <div class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-md">
+        <article
+          class="flex flex-col md:flex-row border border-gray-200 rounded-lg overflow-hidden shadow-md novidade-container">
           <img src="image2.png" alt="Curso SQL Server" class="w-full md:w-1/3 h-500 object-cover">
           <div class="p-4 md:w-2/3">
-            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800">
+            <h2 class="text-lg md:text-xl font-bold mb-2 text-gray-800 text-center">
               [CONTEÚDO EXTRA] Banco de Dados com SQL Server recebe novo projeto prático!
             </h2>
-            <p class="text-gray-700 mb-3">
+            <p class="text-gray-700 mb-3 text-justify">
               Pensado para quem quer dominar o uso de bancos de dados relacionais de forma prática e profissional, o
-              curso acaba de ser atualizado com um novo projeto prático baseado em um cenário do mundo real. Agora, além
-              de aprender toda a teoria e os principais comandos SQL, você terá a oportunidade de construir um sistema
-              completo de cadastro de usuários, colocando seus conhecimentos em ação de maneira aplicada e relevante.
-
-              Esse novo módulo traz desafios reais que envolvem desde a criação e modelagem das tabelas até a
-              implementação de funcionalidades que priorizam a segurança dos dados, como controle de acesso,
-              criptografia de informações sensíveis e uso de boas práticas no desenvolvimento de queries e procedures.
-
-              A atualização eleva ainda mais a qualidade do curso, permitindo que você entenda não só como os bancos de
-              dados funcionam, mas também como aplicá-los em situações comuns do mercado de trabalho, como sistemas de
-              login, autenticação e gerenciamento de perfis de usuários.
-
-              Seja você um iniciante querendo aprender do zero ou alguém buscando se atualizar, este projeto prático vai
-              te ajudar a consolidar o conhecimento e preparar você para atuar com mais confiança em projetos reais. É o
-              momento ideal para levar suas habilidades com SQL Server a um novo nível!
+              curso acaba de ser atualizado com um novo projeto prático baseado em um cenário do mundo real.
             </p>
             <div class="flex justify-between items-center">
               <span class="text-sm text-gray-500">Publicado em 07/04/2025</span>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </main>
 
     <!-- Rodapé -->
-    <footer class="bg-gray-200 py-4 mt-8">
-      <div class="container mx-auto text-center">
-        <p class="font-bold">(17) 99456-7890</p>
-        <p class="font-bold">Dev.site@gmail.com</p>
-      </div>
+    <footer
+      class="py-4 text-center relative border-t-2 bg-gray-100 [body.high-contrast_&]:bg-black [body.high-contrast_&]:text-white">
+      <p class="font-bold">(17) 99456-7890</p>
+      <p class="font-bold mt-2">Dev.site@gmail.com</p>
+      <a href="#Topo"
+        class="inline-block font-bold bg-black text-white px-4 py-2 rounded-full border border-transparent transition hover:bg-gray-800 mt-2 [body.high-contrast_&]:bg-black [body.high-contrast_&]:text-white [body.high-contrast_&]:border-white [body.high-contrast_&]:hover:bg-gray-800">Voltar
+        para cima ↑</a>
     </footer>
   </div>
+
+  <!-- Widget VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <script>
+    let tamanhoFonte = 1; // rem padrão
+
+    function alterarFonte(fator) {
+      tamanhoFonte = Math.max(0.7, tamanhoFonte + fator);
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+        el.style.fontSize = tamanhoFonte + "rem";
+      });
+      localStorage.setItem("tamanhoFonte", tamanhoFonte);
+    }
+
+    function aumentarFonte(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      alterarFonte(0.1);
+    }
+
+    function diminuirFonte(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      alterarFonte(-0.1);
+    }
+
+    function fontePadrao(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      tamanhoFonte = 1;
+      document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+        el.style.fontSize = "1rem";
+      });
+      localStorage.setItem("tamanhoFonte", 1);
+    }
+
+    function alternarContraste(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const main = document.getElementById("main-container");
+      main.classList.toggle("high-contrast");
+
+      if (main.classList.contains("high-contrast")) {
+        localStorage.setItem("modoContraste", "ativo");
+      } else {
+        localStorage.setItem("modoContraste", "inativo");
+      }
+    }
+
+    function toggleAccessibilityMenu(event) {
+      event.stopPropagation();
+      document.getElementById("accessibilityDropdown").classList.toggle("show");
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      const overlay = document.getElementById("menuOverlay");
+      menu.classList.toggle("active");
+      overlay.classList.toggle("active");
+      document.body.style.overflow = menu.classList.contains("active") ? "hidden" : "auto";
+    }
+
+    // Fecha os dropdowns quando clicar fora
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById("mobileMenu");
+      const menuButton = document.querySelector(".mobile-menu-button");
+      const accessibilityDropdown = document.querySelector(".relative");
+
+      // Fecha o menu mobile se clicou fora
+      if (menu.classList.contains("active") &&
+        !menu.contains(event.target) &&
+        !menuButton.contains(event.target)) {
+        toggleMobileMenu();
+      }
+
+      // Fecha o dropdown de acessibilidade se clicou fora
+      if (!accessibilityDropdown.contains(event.target)) {
+        document.getElementById("accessibilityDropdown").classList.remove("show");
+      }
+    });
+
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu();
+      });
+    });lilwitxehli
+
+    // Aplica configurações salvas no carregamento
+    window.addEventListener("load", () => {
+      // Aplica contraste
+      const modoContraste = localStorage.getItem("modoContraste");
+      if (modoContraste === "ativo") {
+        document.getElementById("main-container").classList.add("high-contrast");
+      }
+
+      // Aplica tamanho da fonte
+      const tamanhoSalvo = parseFloat(localStorage.getItem("tamanhoFonte"));
+      if (tamanhoSalvo && !isNaN(tamanhoSalvo)) {
+        tamanhoFonte = tamanhoSalvo;
+        document.querySelectorAll("p, h1, h2, h3, a, li, span, button").forEach(el => {
+          el.style.fontSize = tamanhoFonte + "rem";
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
